@@ -7,7 +7,9 @@
     <body>
         Standart HTML content followed by php.
         <br />
-        <?php print ("Hello world!"); ?>
+        <?php 
+        print ("Hello world!"); 
+        ?>
     </body>
 
 </html>
