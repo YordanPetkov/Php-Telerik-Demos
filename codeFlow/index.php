@@ -54,3 +54,6 @@ switch ($a) {
         echo "A is ... sth different";
         break;
 }
+echo "<br />";
+
+echo ($a > $b) ? $a : $b;
