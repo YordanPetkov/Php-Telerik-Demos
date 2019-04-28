@@ -40,3 +40,6 @@ $myObj2 = new childClass2();
 
 $myObj1->printOut();
 $myObj2->printOut();
+
+echo $myObj1->getValue2("my object 1");
+echo $myObj2->getValue2("DASDAS");
