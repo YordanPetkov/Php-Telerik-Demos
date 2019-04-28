@@ -1,7 +1,7 @@
 <?php
 class Animal {
     protected $name = '';
-    protected $type = '';
+    protected $type = 'animal';
 
     public function __construct($name) {
         $this->name = $name;
@@ -12,7 +12,7 @@ class Animal {
     }
 
     public function printData () {
-        echo "$this->name is probably $this->type <br />";
+        echo "$this->name is probably $this->type. <br />";
     }
 }
 
@@ -44,7 +44,7 @@ class Cat extends Animal {
     }
 
     public function MakePooPoo(){
-        echo "$this->name make small poo poo on bed. <br />.";
+        echo "$this->name make small poo poo on bed. <br />";
     }
 
     public function printData() {
