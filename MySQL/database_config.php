@@ -13,3 +13,6 @@ if(mysqli_select_db($dblink, DATABASE_NAME) === false) {
 else {
     echo "Connecting to database successfully .<br />"; 
 }
+
+
+mysqli_query($dblink, "SET NAMES UTF8");
