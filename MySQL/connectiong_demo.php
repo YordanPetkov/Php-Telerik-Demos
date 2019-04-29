@@ -29,3 +29,5 @@ if ($res !== false) {
 } else {
     echo "SQL query error.";
 }
+
+mysqli_close($dblink);
