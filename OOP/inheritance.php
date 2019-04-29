@@ -10,7 +10,7 @@ class Animal {
 
 }
 
-class Dog extends Animal {
+class Doggy extends Animal {
     protected $type = 'dog';
     public function __construct($name) {
         $this-> name = $name;
@@ -18,5 +18,5 @@ class Dog extends Animal {
     }
 }
 
-$MyDog = new Dog("Sharo");
+$MyDog = new Doggy("Sharo");
 $MyDog->MakePooPoo();

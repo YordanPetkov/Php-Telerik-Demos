@@ -14,7 +14,7 @@
             echo "</pre>";
 
             echo "<br />";
-            echo "Firts value is : ${arr[0]}";
+            echo "Firts value is : $arr[0]";
             echo "<br />";
             foreach($arr as $value){
                 echo $value . "<br />";
