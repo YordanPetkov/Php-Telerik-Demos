@@ -1,4 +1,5 @@
 <?php
+    $pageTitle = "Списък";
     include 'includes/header.php';
 ?>
 
