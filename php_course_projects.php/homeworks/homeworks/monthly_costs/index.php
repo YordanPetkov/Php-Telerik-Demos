@@ -11,9 +11,30 @@ include "header.php";
 <table style="border:1px solid black">
     <thead>
         <tr>
-            <td>AD</td>
+            <th>Име</th>
+            <th>Сума</th>
+            <th>Вид</th>
         </tr>
     </thead>
+    <tbody>
+        
+            <?php
+                if(file_exists('data.txt')){
+                    $result = file('data.txt');
+                    foreach ($result as $row){
+                    echo "<tr>";
+                        $columns = explode('!', $row);
+                        foreach ($columns as $data)
+                        echo '<td>
+                                '.$data.'
+                              </td>';
+                    }
+                    echo "</tr>";
+                }
+                
+
+            ?>
+    </tbody>
 </table>
 
 <?php

@@ -37,9 +37,12 @@ $error = false;
 
 if($_POST){
     $patt = "/[^0-9(.{1})]/";
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    $type = (int)$_POST['type'];
+    $name = trim($_POST['name']);
+    $name = str_replace('!','',$name);
+    $price = trim($_POST['price']);
+    $price = str_replace('!','',$price);
+    $indexOfType = trim((int)$_POST['type']);
+    $indexOfType = str_replace('!','',$indexOfType);
     if(mb_strlen($name) < 3){
         echo "Името е твърде късо.";
         $error = true;
@@ -48,13 +51,13 @@ if($_POST){
         echo "Невалидна цена.";
         $error = true;
     }
-    if(!key_exists($type,$types)){
+    if(!key_exists($indexOfType,$types)){
         echo "Невалиден вид.";
         $error = true;
     } 
 
     if(!$error) {
-        $result = $name . "!" . $price . "!" . $type . PHP_EOL;
+        $result = $name . "!" . $price . "!" . $types[$indexOfType] . PHP_EOL;
         file_put_contents('data.txt', $result, FILE_APPEND);
     }
 }
