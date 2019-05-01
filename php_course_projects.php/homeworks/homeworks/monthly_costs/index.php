@@ -11,6 +11,7 @@ include "header.php";
 <table style="border:1px solid black">
     <thead>
         <tr>
+            <th>Дата</th>
             <th>Име</th>
             <th>Сума</th>
             <th>Вид</th>
@@ -26,7 +27,7 @@ include "header.php";
                         $columns = explode('!', $row);
                         foreach ($columns as $data)
                         echo '<td>
-                                '.$data.'
+                                '.htmlspecialchars($data) .'
                               </td>';
                     }
                     echo "</tr>";
