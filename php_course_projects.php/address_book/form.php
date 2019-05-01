@@ -1,20 +1,16 @@
 <?php
     mb_internal_encoding('UTF-8');
-    echo "<pre>";
+    /* echo "<pre>";
     echo print_r($_POST);
-    echo "</pre>";
+    echo "</pre>"; */
     $pageTitle = "Форма";
     include 'includes/header.php';
-    $groups = [
-        1=>'Приятели',
-        2=>'Бивши',
-        3=>'Бъдещи',
-        4=>'Колеги',
-        5=>'Семейство'
-    ];
+
     if($_POST){
         $username = trim($_POST['username']);
+        $username = str_replace('!', '', $username);
         $phone = trim($_POST['phone']);
+        $phone = str_replace('!', '', $phone);
         $selectedGroup = (int)$_POST['group'];
         $error = false;
 
@@ -34,8 +30,10 @@
         }
 
         if(!$error){
-            $result = $username . ' ' . $phone . ' ' . $groups;
-            file_put_contents('data.txt', $result);
+            $result = $username . '!' . $phone . '!' . $selectedGroup . PHP_EOL;
+            if(file_put_contents('data.txt', $result, FILE_APPEND)){
+                echo "Записа е успешен.";
+            }
         }
 
     }

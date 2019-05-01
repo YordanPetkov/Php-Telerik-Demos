@@ -10,12 +10,19 @@
             <td>Телефон</td>
             <td>Група</td>
         </tr>
-
-        <tr>
-            <td>Иван</td>
-            <td>31235123132</td>
-            <td>Приятели</td>
-        </tr>
+        <?php
+            if(file_exists('data.txt')) {
+                $result = file('data.txt');
+                foreach ($result as $value) {
+                    $columns = explode('!', $value);
+                    echo '<tr>
+                          <td>'.$columns[0].'</td>
+                          <td>'.$columns[1].'</td>
+                          <td>'.$groups[trim($columns[2])].'</td>
+                          </tr>';
+                }
+            }
+        ?>
     </table>
 
 <?php
