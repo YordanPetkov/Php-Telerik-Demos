@@ -48,7 +48,9 @@ if($_POST){
     $name = trim($_POST['name']);
     $name = str_replace('!','',$name);
 
+    $_POST['price'] = number_format($_POST['price'],2,'.','');
     $price = trim($_POST['price']);
+    $price = str_replace(',','.',$price);
     $price = str_replace('!','',$price);
 
     $indexOfType = trim((int)$_POST['type']);

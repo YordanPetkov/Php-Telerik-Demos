@@ -2,7 +2,7 @@
 mb_internal_encoding('UTF-8');
 $pageTitle = "Списък";
 require "header.php";
-$filter = -1;
+$filter = "Всички";
 
 if(array_key_exists("filter",$_POST)){
     $filter = $_POST['filter'];
@@ -47,7 +47,7 @@ if(array_key_exists("filter",$_POST)){
                     echo "<tr>";
                         $columns = explode('!', $row);
 
-                        if(trim($filter) != "Всичко" && trim($columns[3]) == trim($filter)){
+                        if(trim($filter) == "Всички" || trim($columns[3]) == trim($filter)){
                             foreach ($columns as $data){
                                 if($indexOfColumn == 2)$sum += (float)$data;
                                 echo '<td>
@@ -69,7 +69,7 @@ if(array_key_exists("filter",$_POST)){
                             echo '<td></td>';
                         } else {
                             echo '<td>
-                                '.$sum.'
+                                '.number_format($sum,2,'.','') .'
                               </td>';
                         }
                         
