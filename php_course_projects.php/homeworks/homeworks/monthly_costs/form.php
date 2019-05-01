@@ -1,7 +1,7 @@
 <?php
 mb_internal_encoding('UTF-8');
 $pageTitle = "Списък";
-include "header.php";
+require "header.php";
 
 
 
@@ -21,7 +21,7 @@ include "header.php";
     </div>
     <div>
         <label for="cost-type">Вид</label>
-        <select>
+        <select name="type">
             <?php
                 foreach ($types as $key => $value){
                     echo '<option value='.$key.'>'.$value.'</option>';
@@ -33,4 +33,30 @@ include "header.php";
 </form>
 
 <?php
+$error = false;
+
+if($_POST){
+    $patt = "/[^0-9(.{1})]/";
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $type = (int)$_POST['type'];
+    if(mb_strlen($name) < 3){
+        echo "Името е твърде късо.";
+        $error = true;
+    }
+    if((float)$price < 0 || !is_numeric($price)){
+        echo "Невалидна цена.";
+        $error = true;
+    }
+    if(!key_exists($type,$types)){
+        echo "Невалиден вид.";
+        $error = true;
+    } 
+
+    if(!$error) {
+        $result = $name . "!" . $price . "!" . $type . PHP_EOL;
+        file_put_contents('data.txt', $result, FILE_APPEND);
+    }
+}
+
 include "footer.php";
