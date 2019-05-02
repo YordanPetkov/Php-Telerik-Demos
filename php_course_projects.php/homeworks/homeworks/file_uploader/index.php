@@ -5,7 +5,7 @@ session_start();
 $correctUsername = "user";
 $correctPassword = "123456";
 
-$pageTitle = "Сесии";
+$pageTitle = "Login";
 require "includes/header.php";
 
 if(array_key_exists("loggedIn", $_SESSION)){
@@ -19,7 +19,8 @@ if(array_key_exists("loggedIn", $_SESSION)){
  if($_POST) {
     if(array_key_exists("username",$_POST) && array_key_exists("pass",$_POST)){
         if($_POST["username"] == $correctUsername && $_POST["pass"] == $correctPassword){
-            $_SESSION['loggedIn'] = true; 
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['username'] = htmlspecialchars($_POST["username"]); 
             header("Location: mainPage.php");
             exit;
         } else {
