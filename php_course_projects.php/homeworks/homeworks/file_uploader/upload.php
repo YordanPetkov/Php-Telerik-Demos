@@ -3,9 +3,6 @@ session_start();
 $pageTitle = "File Uploader";
 require "includes/header.php";
 
-echo "<pre>";
-print_r($_FILES);
-echo "</pre>";
 if(array_key_exists("username", $_SESSION)){
     $uploads_dir = "images" . DIRECTORY_SEPARATOR . $_SESSION['username'] . DIRECTORY_SEPARATOR;
 }else {
