@@ -22,5 +22,10 @@ if(array_key_exists("loggedIn", $_SESSION)){
     <input type="submit" value="Изход" />
 </form>
 
+<form method="POST" action="upload.php">
+    <input type="submit" value="Качи файл" />
+</form>
+
 <?php
+
 require "includes/footer.php";
