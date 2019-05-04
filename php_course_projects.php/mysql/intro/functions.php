@@ -16,7 +16,7 @@ function printData($connection) {
 }
 
 function createConnectionWithDB(){
-    $connection = mysqli_connect('localhost', 'exlogin', '123456', 'test');
+    $connection = mysqli_connect('localhost', 'exlogin', '123456', 'demo_chat');
 
     if(!$connection) {
         echo 'No database';
