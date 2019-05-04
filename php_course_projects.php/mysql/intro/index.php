@@ -24,7 +24,6 @@ if($_POST) {
 
     $sql = 'INSERT INTO messages (msg_data) VALUES ("' .$msg. '")';
     
-    echo mysqli_insert_id($connection);
     if(mysqli_query($connection, $sql)) {
         echo "OK";
     }else {
@@ -40,9 +39,11 @@ if($_POST) {
     DELETE FROM users 
     WHERE age > 60'); */
 
-    mysqli_query($connection, 'INSERT INTO users (user_name)
+/*     mysqli_query($connection, 'INSERT INTO users (user_name)
                 VALUES ("test")');
 echo mysqli_affected_rows($connection); 
+echo mysqli_insert_id($connection);
+ */
 
 $sql = 'SELECT user_name AS nick,age,is_active 
         FROM users
