@@ -5,12 +5,32 @@ if(!$con) {
 }
 
 mysqli_set_charset($con, 'utf8');
+/* 
+$sql = 'SELECT * FROM users 
+WHERE user_name="'.mysqli_real_escape_string($con, $_GET['name']).'" 
+AND user_password="'.mysqli_real_escape_string($con, $_GET['pass']).'"';
 
-$sql = 'SELECT * FROM users';
-
+echo $sql;
 $q = mysqli_query($con, $sql);
 
 while($row = mysqli_fetch_assoc($q)) {
     echo '<pre>' .print_r($row, true). '</pre>';
-    echo "<br />";
+} */
+
+//подготвя връзката
+$sql = 'SELECT * FROM users WHERE user_name=? AND user_password=?';
+
+$stmt = mysqli_prepare($con, $sql);
+/**
+ * types :
+ * b = bool
+ * i = int
+ * s = string
+ * d = double
+ */
+if(!$stmt) {
+    echo "ERROR";
+    exit;
 }
+mysqli_stmt_bind_param($stmt, 'ss', $_GET['name'],$_GET['pass']);
+mysqli_stmt_execute($stmt);
