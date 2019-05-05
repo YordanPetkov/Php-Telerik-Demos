@@ -1,5 +1,19 @@
 <?php
 session_start();
+require_once 'functions.php';
+
+if($_POST) {
+    if(array_key_exists('username',$_POST)
+        && array_key_exists('password', $_POST)) {
+            if(checkUser($_POST['username'], $_POST['password'])) {
+                $_SESSION['username'] = htmlspecialchars($_POST['username']);
+                header('Location: messages.php');
+                exit;
+            }else {
+                echo "Грешни данни!";
+            }
+        }
+}
 
 ?>
 
