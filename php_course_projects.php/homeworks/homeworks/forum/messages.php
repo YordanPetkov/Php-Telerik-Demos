@@ -14,3 +14,6 @@ if(isset($_SESSION['username'])) {
 <form action='logout.php'>
     <input type="submit" value="Изход">
 </form>
+
+<?php
+printMessages();

@@ -35,3 +35,29 @@ function checkUser($username, $password) {
     return false;
 }
 
+function printMessages() {
+    global $connection;
+    $sql = 'SELECT * FROM messages ORDER BY msg_date DESC, msg_id DESC';
+    $result = mysqli_query($connection, $sql);
+    if(mysqli_num_rows($result) > 0) {
+        echo '<table style="border:1px solid black">';
+        echo '<tr>';
+        echo '<th>Номер</th>';
+        echo '<th>Дата</th>';
+        echo '<th>Заглавие</th>';
+        echo '<th>Съобщение</th>';
+        echo '<th>Автор</th>';
+        echo '</tr>';
+        while($row = mysqli_fetch_assoc($result)) {
+            echo '<tr>';
+            echo '<td>' . $row['msg_id'] . '</td>';
+            echo '<td>' . $row['msg_date'] . '</td>';
+            echo '<td>' . $row['msg_title'] . '</td>';
+            echo '<td>' . $row['msg_data'] . '</td>';
+            echo '<td>' . $row['author'] . '</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+    
+}
