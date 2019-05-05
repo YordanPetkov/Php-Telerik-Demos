@@ -34,3 +34,4 @@ function checkUser($username, $password) {
     }
     return false;
 }
+
