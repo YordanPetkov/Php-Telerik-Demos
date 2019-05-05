@@ -18,7 +18,7 @@ while($row = mysqli_fetch_assoc($q)) {
 } */
 
 //подготвя връзката
-$sql = 'SELECT * FROM users WHERE user_name=? AND user_password=?';
+$sql = 'SELECT user_name,age FROM users WHERE user_name=? AND user_password=?';
 
 $stmt = mysqli_prepare($con, $sql);
 /**
@@ -34,3 +34,6 @@ if(!$stmt) {
 }
 mysqli_stmt_bind_param($stmt, 'ss', $_GET['name'],$_GET['pass']);
 mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $user_name, $user_age);
+mysqli_stmt_fetch($stmt);
+echo $user_name . "--" . $user_age;
