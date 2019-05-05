@@ -1,5 +1,6 @@
 <?php
 $connection = mysqli_connect('localhost', 'exlogin', '123456', 'demo_chat');
+mysqli_set_charset($connection, 'utf8');
 
 function usernameExists($username) {
     $username = htmlspecialchars($username);
@@ -35,6 +36,7 @@ function checkUser($username, $password) {
     return false;
 }
 
+
 function printMessages() {
     global $connection;
     $sql = 'SELECT * FROM messages ORDER BY msg_date DESC, msg_id DESC';
@@ -60,4 +62,23 @@ function printMessages() {
         echo '</table>';
     }
     
+}
+
+function postMessage($title, $message, $author) {
+    $title = htmlspecialchars($title);
+    $message = htmlspecialchars($message);
+    $author = htmlspecialchars($author);
+    global $connection;
+
+    $sql = 'INSERT INTO messages (msg_title,msg_data,author)
+         VALUES ("'.$title.'", "'.$message.'", "'.$author.'")';
+    
+    if(mysqli_query($connection, $sql)){
+        header('Location: messages.php');
+        exit;
+    }else {
+        echo "Грешка със съобщението.";
+        header('Location: newMessage.php');
+        exit;
+    }
 }

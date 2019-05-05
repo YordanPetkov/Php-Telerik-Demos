@@ -21,11 +21,11 @@ if($_POST) {
 <form method='POST' action=''>
     <div>
         <label for="user-name">Име</label>
-        <input type="text" name="username" id="user-name">
+        <input type="text" name="username" id="user-name" require>
     </div>
     <div>
         <label for="pass">Парола</label>
-        <input type="password" name="password" id="pass">
+        <input type="password" name="password" id="pass" require>
     </div>
     <input type="submit" value="Вход">
 </form>

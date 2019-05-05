@@ -29,15 +29,15 @@ if($_POST) {
 <form method='POST' action=''>
     <div>
         <label for="user-name">Име</label>
-        <input type="text" minlength=5 name="username" id="user-name">
+        <input type="text" minlength=5 name="username" id="user-name" require>
     </div>
     <div>
         <label for="pass">Парола</label>
-        <input type="password" minlength=5 name="password" id="pass">
+        <input type="password" minlength=5 name="password" id="pass" require>
     </div>
     <div>
         <label for="confpass">Повтори паролата</label>
-        <input type="password" minlength=5 name="confpassword" id="confpass">
+        <input type="password" minlength=5 name="confpassword" id="confpass" require>
     </div>
     <input type="submit" value="Регистрация">
 </form>

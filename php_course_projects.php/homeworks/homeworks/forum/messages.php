@@ -15,5 +15,9 @@ if(isset($_SESSION['username'])) {
     <input type="submit" value="Изход">
 </form>
 
+<form action='newMessage.php'>
+    <input type="submit" value="Ново съобщение">
+</form>
 <?php
+
 printMessages();
