@@ -3,7 +3,7 @@ $title = "Нова книга";
 include './inc/header.php'; 
 ?>
 <a href="index.php">Списък</a>
-<a href="add_book.php">Нова книга</a>
+<a href="authors.php">Автори</a>
 <form method='POST' action="add_book.php">
     <div>
         <label for="book-name">Име</label>
@@ -37,20 +37,57 @@ include './inc/header.php';
     if(array_key_exists('book_name',$_POST) 
     && array_key_exists('authors', $_POST)){
         $book_name = trim($_POST['book_name']);
+        $book_name = mysqli_real_escape_string($db ,$book_name);
         $authors = $_POST['authors'];
         $errors = [];
         if(mb_strlen($book_name) < 2) {
             $errors[] = '<p>Невалидно име</p>';
         }
         if(!is_array($authors) || count($authors) == 0) {
-            $errors[] = '<p>Невалидни автори</p>';
+            $errors[] = '<p>Невалидни данни</p>';
         }
+
+        foreach ($authors as $aut) {
+            if(!isAuthorIdExists($db, $aut)) {
+                $er[] = '<p>Невалиден автор </p>';
+                break;
+            }
+        }
+
+        $sql = 'SELECT * FROM `books` WHERE book_title = "'.$book_name.'"';
+        $q = mysqli_query($db, $sql);
+        if(mysqli_error($db)) {
+            $errors[] = '<p>Грешка</p>';
+        }
+        if(mysqli_num_rows($q) > 0) {
+            $errors[] = '<p>Има книга със същото име.</p>';
+        }
+        
+
         if(count($errors) > 0) {
             foreach($errors as $er) {
                 echo $er;
             }
         }else {
-            
+            $sql = 'INSERT INTO books (book_title)
+             VALUES ("'.mysqli_real_escape_string($db, $book_name).'")';
+
+            $q = mysqli_query($db, $sql);
+            if(mysqli_error($db)) {
+                echo "Грешка";
+            }else {
+                $book_id = mysqli_insert_id($db);
+                foreach ($authors as $author_id) {
+                    mysqli_query($db, 'INSERT INTO books_authors (book_id,author_id)
+                    VALUES ('.$book_id.','.$author_id.')');
+                    if(mysqli_error($db)){
+                        echo "Грешка";
+                        exit;
+                    }
+                }
+                echo "Книгата е добавена.";
+            }
+
         }
 
     }
