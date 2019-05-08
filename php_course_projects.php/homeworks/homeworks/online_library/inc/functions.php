@@ -20,3 +20,15 @@ function getAuthors($db) {
     }
     return $ret;
 }
+
+function isAuthorIdExists($db, $id) {
+    $id = (int)$id;
+    $q = mysqli_query($db, 'SELECT * FROM authors WHERE author_id' . $id);
+    if(mysqli_error($db)){
+        return false;
+    }
+    if(mysqli_num_rows($q)  == 1) {
+        return true;
+    }
+    return false;
+}

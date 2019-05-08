@@ -34,7 +34,27 @@ include './inc/header.php';
 
 
 <?php
+    if(array_key_exists('book_name',$_POST) 
+    && array_key_exists('authors', $_POST)){
+        $book_name = trim($_POST['book_name']);
+        $authors = $_POST['authors'];
+        $errors = [];
+        if(mb_strlen($book_name) < 2) {
+            $errors[] = '<p>Невалидно име</p>';
+        }
+        if(!is_array($authors) || count($authors) == 0) {
+            $errors[] = '<p>Невалидни автори</p>';
+        }
+        if(count($errors) > 0) {
+            foreach($errors as $er) {
+                echo $er;
+            }
+        }else {
+            
+        }
 
+    }
+    
 ?>
 <?php
 include './inc/footer.php';
