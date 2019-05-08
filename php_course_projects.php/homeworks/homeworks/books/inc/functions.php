@@ -1,7 +1,7 @@
 <?php
 
 mb_internal_encoding('UTF-8');
-$db = mysqli_connect('localhost', 'gatakka', 'qwerty', 'books');
+$db = mysqli_connect('localhost', 'exlogin', '123456', 'books');
 if (!$db) {
     echo 'No database';
 }
