@@ -10,5 +10,5 @@ while ($row = mysqli_fetch_assoc($q)) {
 $data['title'] = 'Книги';
 $data['content'] = 'templates/index_public.php';
 $data['header'] = 'templates/header_public.php'; 
-render($data, './templates/layouts/normal_layouts.php');
+render($data, './templates/layouts/left_layouts.php');
 
