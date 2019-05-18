@@ -7,6 +7,7 @@ class Human extends Mammal{
     }
 
     public function move() {
+        parent::move();
         echo 'human move';
     }
 }
