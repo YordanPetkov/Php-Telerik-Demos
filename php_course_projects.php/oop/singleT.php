@@ -1,21 +1,30 @@
 <?php
 
-class DB {
+class Registry {
 
     private static $instance = null;
-    private $table_name;
+    private $data;
 
     private function __construct() {
+    }
+    
+    public function setValue($key, $val) {
+        $this->data[$key] = $val;
+    }
+    
+    public function getValue($key) {
+        return $this->data[$key];
     }
 
     public static function getInstance() {
         if(self::$instance == null) {
-            self::$instance = new DB();
+            self::$instance = new self();
         }
         return self::$instance;
     }
 }
 
-$connection = DB::getInstance();
+$connection = Registry::getInstance();
 
-$connection2 = DB::getInstance();
+$connection->setValue('username', 'gosho');
+echo $connection->getValue('username');
