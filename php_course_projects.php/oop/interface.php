@@ -8,7 +8,10 @@ class Article {
     private $data;
     
     public function write($obj) {
-        $obj->write($this->data);
+        if($obj instanceof IWriteInterface){
+            $obj->write($this->data);
+        }
+        
     }
 }
 
@@ -22,11 +25,13 @@ class FileWriter implements IWriteInterface{
 class SendToSocket implements IWriteInterface{
     
     public function write($data) {
+        
         echo 'write to socket';
     }
 }
 
 $a = new Article();
 $writer = new FileWriter();
-
 $a->write($writer);
+
+
