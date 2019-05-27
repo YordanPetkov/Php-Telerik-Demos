@@ -7,8 +7,11 @@ class image extends CI_Controller {
         echo 'hello from test controler';
     }
 
-    public function get() {
-        echo 'Hello';
+    public function get($id = null, $name = null) {
+        $view_data = [];
+        $view_data['username'] = ivan;
+        $view_data['age'] = 23;
+        $this->load->view('image', $view_data);
     }
 
     
