@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 /*
 GET /user/ivan
 POST /user
 DELETE /user/ivan
 POST /user/ivan
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/user/{username}/{id?}', function ($username, $id = null) {
+    return 'Hello from ' . $username . ' - ' . $id;
+});
+
