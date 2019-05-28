@@ -22,6 +22,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::get('/user/{username}', function ($username, $id = null) {
+    return 'Hello from ' . $username . ' with where.';
+})->where('username', '[A-Za-z]+');
+
 Route::get('/user/{username}/{id?}', function ($username, $id = null) {
     return 'Hello from ' . $username . ' - ' . $id;
 });
