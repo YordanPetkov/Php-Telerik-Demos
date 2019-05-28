@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+GET /user/ivan
+POST /user
+DELETE /user/ivan
+POST /user/ivan
+*/
