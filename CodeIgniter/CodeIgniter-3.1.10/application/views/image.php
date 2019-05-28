@@ -1,2 +1,1 @@
-<?php
-echo 'Hello ' . $username;
+<a href="<?php echo site_url('admin');?>">Admin</a>
