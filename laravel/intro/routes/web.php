@@ -45,3 +45,6 @@ Route::get('/greet/{username}', function ($username) {
 Route::get('/layout-demo', 'LayoutController@index');
 
 Route::get('/session-demo', 'SessionDemoController@index');
+
+Route::get('/register', 'ValidationDemoController@register_form');
+Route::post('/register', 'ValidationDemoController@register');
