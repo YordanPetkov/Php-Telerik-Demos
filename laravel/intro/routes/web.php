@@ -41,3 +41,5 @@ Route::get('/user/{username}/{id?}', function ($username, $id = null) {
 Route::get('/greet/{username}', function ($username) {
     return view('public.greeting', ['username' => $username]);
 });
+
+Route::get('/layout-demo', 'LayoutController@index');
