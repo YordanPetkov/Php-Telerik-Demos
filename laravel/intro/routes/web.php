@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test-c/{id}', 'HomeController@index');
+Route::get('/test-c/{name}', 'HomeController@index');
 
 Route::get('/admin-c', 'Admin\\AdminController@index');
 
