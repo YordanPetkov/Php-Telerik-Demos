@@ -22,7 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test-c', 'HomeController@index');
+Route::get('/test-c/{id}', 'HomeController@index');
+
+Route::get('/admin-c', 'Admin\\AdminController@index');
 
 Route::get('/hello', function() {
     return view('public.hello', ['username' => 'dancho']);
