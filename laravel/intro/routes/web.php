@@ -22,7 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/hello', function() {
+    return view('public.hello', ['username' => 'dancho']);
+});
 
 Route::get('/user/{username}', function ($username, $id = null) {
     return 'Hello from ' . $username . ' with where.';
@@ -32,3 +34,6 @@ Route::get('/user/{username}/{id?}', function ($username, $id = null) {
     return 'Hello from ' . $username . ' - ' . $id;
 });
 
+Route::get('/greet/{username}', function ($username) {
+    return view('public.greeting', ['username' => $username]);
+});
