@@ -3,6 +3,7 @@
 namespace CoolBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ValidationDemoController extends Controller
 {
@@ -16,7 +17,7 @@ class ValidationDemoController extends Controller
 
     public function register(Request $request) {
         
-        $this->validate($request,[
+        /* $this->validate($request,[
             'username' => 'min:5|max:30',
             'email' => 'email',//exists:users,user_email
             'pass' => 'min:10',
@@ -24,6 +25,19 @@ class ValidationDemoController extends Controller
         ], [
             'username.min' => 'Името е прекалено късо',
             'username.max' => 'Името е прекалено дълго',
+        ]); */
+
+        $validator = Validator::make(['title' => 'das'], [
+            'title' => 'required|unique:posts|max:255',
+            'body' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return redirect('/register')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+
     }
 }
