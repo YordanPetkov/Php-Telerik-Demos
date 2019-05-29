@@ -21,6 +21,9 @@ class ValidationDemoController extends Controller
             'email' => 'email',//exists:users,user_email
             'pass' => 'min:10',
             'pass2' => 'same:pass'
+        ], [
+            'username.min' => 'Името е прекалено късо',
+            'username.max' => 'Името е прекалено дълго',
         ]);
     }
 }
