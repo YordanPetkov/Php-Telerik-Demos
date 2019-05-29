@@ -44,4 +44,4 @@ Route::get('/greet/{username}', function ($username) {
 
 Route::get('/layout-demo', 'LayoutController@index');
 
-Route::get('/layout-demo', 'SessionDemoController@index');
+Route::get('/session-demo', 'SessionDemoController@index');
