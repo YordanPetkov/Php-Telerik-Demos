@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test-c', 'HomeController@index');
+
 Route::get('/hello', function() {
     return view('public.hello', ['username' => 'dancho']);
 });
