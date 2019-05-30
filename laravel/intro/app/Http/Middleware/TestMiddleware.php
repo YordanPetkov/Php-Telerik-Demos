@@ -14,8 +14,11 @@ class TestMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->age <= 200) {
+        /* if ($request->age <= 200) {
             return redirect('home');
+        } */
+        if($request->age < 18) {
+            return redirect('/');
         }
 
         return $next($request);
