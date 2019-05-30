@@ -17,9 +17,11 @@ class TestMiddleware
         /* if ($request->age <= 200) {
             return redirect('home');
         } */
-        if($request->age < 18) {
+        /* if($request->age < 18) {
             return redirect('/');
-        }
+        } */
+
+        echo 'Before middleware.';
 
         return $next($request);
     }

@@ -49,4 +49,4 @@ Route::get('/session-demo', 'SessionDemoController@index');
 Route::get('/register', 'ValidationDemoController@register_form');
 Route::post('/register', 'ValidationDemoController@register')->name('register_url');
 
-Route::get('/middleware-demo', 'MiddlewareDemoController@index')->middleware(\CoolBlog\Http\Middleware\TestMiddleware::class);
+Route::get('/middleware-demo', 'MiddlewareDemoController@index')->middleware('test');
