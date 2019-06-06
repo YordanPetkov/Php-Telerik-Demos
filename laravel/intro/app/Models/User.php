@@ -1,6 +1,6 @@
 <?php
 
-namespace CoolBlog;
+namespace CoolBlog\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;

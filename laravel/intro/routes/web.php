@@ -50,3 +50,5 @@ Route::get('/register', 'ValidationDemoController@register_form');
 Route::post('/register', 'ValidationDemoController@register')->name('register_url');
 
 Route::get('/middleware-demo', 'MiddlewareDemoController@index')->middleware('test');
+Route::get('/dbdemo', 'DBdemo@index');
+Route::get('/eqdbdemo', 'DBdemo@EloquentDemo');
